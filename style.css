@@ -613,7 +613,7 @@ h1, h2, h3{ font-family:var(--f-display); font-weight:400; letter-spacing:.01em;
 }
 .mascota-sombra{
   position:absolute;
-  bottom:8px; left:38%;
+  bottom:8px; left:62%;
   transform:translateX(-50%);
   width:150px; height:22px;
   background:radial-gradient(ellipse at center, rgba(255,210,63,.32), transparent 70%);
