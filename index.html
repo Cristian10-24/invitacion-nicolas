@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Invitación al cumpleaños de Nicolás Orozco: El Partido del Cumpleaños. Sábado 29 de agosto de 2026, 3:00 PM, Cancha Sintética Brasileirao, Barranquilla.">
+<meta name="theme-color" content="#06140d">
+<title>¡Estás Invitado! · El Partido del Cumpleaños de Nicolás ⚽</title>
+
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+
+<!-- Preconnect y carga de Google Fonts (Anton para titulares tipo dorsal, Fredoka para el cuerpo) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Fredoka:wght@400;500;600;700&display=swap">
+
+<!-- Única imagen precargada: la fotografía del estadio, protagonista del Hero -->
+<link rel="preload" as="image" href="futbol.jpeg">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="#ficha" class="skip-link">Saltar al contenido</a>
+
+<!-- ============================= -->
+<!-- INTRO DE ENTRADA (se auto-elimina del DOM al terminar o al saltarla) -->
+<!-- ============================= -->
+<div class="intro-wrap" id="introWrap">
+  <div class="intro" id="intro" aria-hidden="true">
+    <div class="intro-cancha"></div>
+    <span class="balon-wrap intro-balon" id="introBalon">
+      <span class="balon"></span>
+    </span>
+    <p class="intro-texto" id="introTexto">PREPARADOS...</p>
+  </div>
+  <button class="intro-skip" id="introSkip" type="button">Saltar intro ⏭</button>
+</div>
+<noscript><style>.intro-wrap{ display:none !important; }</style></noscript>
+
+<!-- ============================= -->
+<!-- HERO -->
+<!-- ============================= -->
+<header class="hero" id="inicio">
+  <div class="hero-foto" id="heroFoto" role="img" aria-label="Fotografía de un estadio de fútbol al atardecer, tomada a nivel del césped, con el sol entrando entre las gradas"></div>
+  <div class="hero-sol" aria-hidden="true"></div>
+  <div class="hero-lineas" aria-hidden="true"></div>
+  <div class="hero-destellos" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <div class="hero-scrim" aria-hidden="true"></div>
+
+  <div class="hero-content">
+    <p class="hero-kicker">⚽ ¡Estás invitado!</p>
+
+    <div class="tarjeta-jugador" id="tarjetaJugador">
+      <span class="tj-8" aria-hidden="true">8</span>
+      <span class="tj-num">N° 08</span>
+      <h1 class="tj-nombre">Nicolás<br><span class="tj-apellido">Orozco</span></h1>
+      <p class="tj-pos">Delantero · Capitán del equipo</p>
+      <span class="balon-wrap tj-balon" aria-hidden="true"><span class="balon"></span></span>
+    </div>
+
+    <p class="hero-sub">El Partido del Cumpleaños</p>
+
+    <a href="#ficha" class="btn btn-cta" id="ctaVer">⚽ Ver Invitación</a>
+
+    <p class="hero-scroll">Desliza para entrar al partido <span aria-hidden="true">↓</span></p>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============================= -->
+  <!-- FICHA DEL PARTIDO -->
+  <!-- ============================= -->
+  <section class="seccion ficha" id="ficha" aria-labelledby="fichaTitulo">
+    <div class="contenedor">
+      <p class="kicker">━ 01 · Match Day ━</p>
+      <h2 id="fichaTitulo" class="titulo">Ficha del Partido</h2>
+
+      <div class="marcador" data-reveal>
+        <div class="marcador-equipo">
+          <span class="marcador-nombre" data-cfg="nombreCorto">Nicolás</span>
+        </div>
+        <div class="marcador-centro">
+          <span class="marcador-fecha">29<br>Ago</span>
+          <span class="marcador-vs">vs.</span>
+          <span class="marcador-hora">15:00</span>
+        </div>
+        <div class="marcador-equipo">
+          <span class="marcador-nombre">¡La Diversión!</span>
+        </div>
+      </div>
+      <p class="ficha-nota">(Tranquilos, aquí todos ganamos 🏆)</p>
+
+      <div class="cards">
+        <article class="card" data-reveal style="--d:0s">
+          <span class="card-icono" aria-hidden="true">📅</span>
+          <h3>Fecha</h3>
+          <p data-cfg="fechaLarga">29 de agosto, 2026</p>
+        </article>
+        <article class="card" data-reveal style="--d:.12s">
+          <span class="card-icono" aria-hidden="true">⏰</span>
+          <h3>Hora</h3>
+          <p>3:00 PM</p>
+        </article>
+        <article class="card" data-reveal style="--d:.24s">
+          <span class="card-icono" aria-hidden="true">📍</span>
+          <h3>Lugar</h3>
+          <p data-cfg="lugar">Cancha Sintética Brasileirao</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= -->
+  <!-- COUNTDOWN -->
+  <!-- ============================= -->
+  <section class="seccion countdown-sec" id="countdown" aria-labelledby="cdTitulo">
+    <div class="contenedor">
+      <p class="kicker">━ 02 · Cuenta Regresiva ━</p>
+      <h2 id="cdTitulo" class="titulo">⏱️ Faltan...</h2>
+
+      <div class="marcador-electronico" data-reveal>
+        <div class="unidad">
+          <span class="unidad-num" id="days">00</span>
+          <span class="unidad-label">Días</span>
+        </div>
+        <div class="unidad">
+          <span class="unidad-num" id="hours">00</span>
+          <span class="unidad-label">Horas</span>
+        </div>
+        <div class="unidad">
+          <span class="unidad-num" id="minutes">00</span>
+          <span class="unidad-label">Min.</span>
+        </div>
+        <div class="unidad">
+          <span class="unidad-num" id="seconds">00</span>
+          <span class="unidad-label">Seg.</span>
+        </div>
+      </div>
+      <p class="sr-only" id="cdAnuncio" aria-live="polite" aria-atomic="true"></p>
+      <p class="countdown-mensaje" id="countdownMsg" hidden>🎉 ¡Hoy es el partido! 🎉</p>
+    </div>
+  </section>
+
+  <!-- ============================= -->
+  <!-- CONVOCATORIA -->
+  <!-- ============================= -->
+  <section class="seccion convocatoria" id="convocatoria" aria-labelledby="convTitulo">
+    <div class="contenedor">
+      <p class="kicker">━ 03 · Tu Convocatoria ━</p>
+      <h2 id="convTitulo" class="titulo">El Equipo Está Convocado</h2>
+
+      <div class="tarjeta-convocatoria" data-reveal>
+        <span class="balon-wrap conv-balon" aria-hidden="true"><span class="balon"></span></span>
+        <p class="conv-estado">Convocado</p>
+        <p class="conv-texto">Nicolás cumple <strong data-cfg="edad">8</strong> años</p>
+        <p class="conv-texto conv-texto--grande">¡Y tú estás invitado!</p>
+      </div>
+
+      <div class="mascota" data-reveal>
+        <div class="mascota-sombra" aria-hidden="true"></div>
+        <img
+          src="mascota-sinfondo.png"
+          alt="Tiburón mascota del equipo, vestido con camiseta deportiva a rayas y pantaloneta"
+          class="mascota-img"
+          loading="lazy"
+          decoding="async"
+          width="400"
+          height="579"
+          onerror="this.closest('.mascota').style.display='none'">
+        <p class="mascota-tag">Mascota oficial del equipo</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= -->
+  <!-- PROGRAMACIÓN -->
+  <!-- ============================= -->
+  <section class="seccion programacion" id="programacion" aria-labelledby="progTitulo">
+    <div class="contenedor">
+      <p class="kicker">━ 04 · Próxima Jugada ━</p>
+      <h2 id="progTitulo" class="titulo">⚽ Lo Que Nos Espera</h2>
+
+      <ol class="timeline">
+        <li data-reveal style="--d:0s">
+          <span class="tl-icono" aria-hidden="true">⚽</span>
+          <div class="tl-texto"><h3>Partido de fútbol amistoso</h3></div>
+        </li>
+        <li data-reveal style="--d:.08s">
+          <span class="tl-icono" aria-hidden="true">🏆</span>
+          <div class="tl-texto"><h3>Retos y desafíos</h3></div>
+        </li>
+        <li data-reveal style="--d:.16s">
+          <span class="tl-icono" aria-hidden="true">🎵</span>
+          <div class="tl-texto"><h3>Música y animación</h3></div>
+        </li>
+        <li data-reveal style="--d:.24s">
+          <span class="tl-icono" aria-hidden="true">🎂</span>
+          <div class="tl-texto"><h3>Torta de cumpleaños</h3></div>
+        </li>
+        <li data-reveal style="--d:.32s">
+          <span class="tl-icono" aria-hidden="true">🎁</span>
+          <div class="tl-texto"><h3>Sorpresas</h3></div>
+        </li>
+        <li data-reveal style="--d:.4s">
+          <span class="tl-icono" aria-hidden="true">🎉</span>
+          <div class="tl-texto"><h3>Mucha diversión</h3></div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============================= -->
+  <!-- DRESS CODE -->
+  <!-- ============================= -->
+  <section class="seccion dresscode" id="uniforme" aria-labelledby="dressTitulo">
+    <div class="contenedor contenedor--split">
+      <div class="dress-texto" data-reveal>
+        <p class="kicker">━ 05 · Dress Code ━</p>
+        <h2 id="dressTitulo" class="titulo">👟 Uniforme del Equipo</h2>
+        <ul class="dress-lista">
+          <li>Camiseta deportiva cómoda</li>
+          <li>Pantaloneta o sudadera</li>
+          <li>Tenis deportivos</li>
+        </ul>
+      </div>
+
+      <div class="camiseta-wrap" data-reveal aria-hidden="true">
+        <div class="camiseta">
+          <span class="camiseta-manga camiseta-manga--izq"></span>
+          <span class="camiseta-manga camiseta-manga--der"></span>
+          <span class="camiseta-cuerpo">
+            <span class="camiseta-cuello"></span>
+            <span class="camiseta-numero">8</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= -->
+  <!-- CANCHA INTERACTIVA -->
+  <!-- ============================= -->
+  <section class="seccion cancha-sec" id="cancha" aria-labelledby="canchaTitulo">
+    <div class="contenedor">
+      <p class="kicker">━ 06 · A Jugar ━</p>
+      <h2 id="canchaTitulo" class="titulo">Cancha Interactiva</h2>
+      <p class="cancha-ayuda">Toca el balón para lanzar a portería ⚽</p>
+
+      <div class="cancha-campo" id="canchaCampo" tabindex="0" role="button" aria-label="Cancha interactiva: toca o presiona Enter para que el balón dispare hacia la portería">
+        <div class="cancha-linea-media" aria-hidden="true"></div>
+        <div class="cancha-circulo" aria-hidden="true"></div>
+        <div class="cancha-area cancha-area--izq" aria-hidden="true"></div>
+        <div class="cancha-area cancha-area--der" aria-hidden="true"></div>
+        <div class="cancha-porteria cancha-porteria--izq" aria-hidden="true"></div>
+        <div class="cancha-porteria cancha-porteria--der" aria-hidden="true"></div>
+        <span class="balon-wrap cancha-balon" id="canchaBalon" aria-hidden="true"><span class="balon"></span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= -->
+  <!-- UBICACIÓN -->
+  <!-- ============================= -->
+  <section class="seccion ubicacion" id="ubicacion" aria-labelledby="ubiTitulo">
+    <div class="contenedor">
+      <p class="kicker">━ 07 · Estadio ━</p>
+      <h2 id="ubiTitulo" class="titulo">📍 Dónde Es El Partido</h2>
+
+      <div class="ticket" data-reveal>
+        <div class="ticket-principal">
+          <span class="ticket-label">Entrada VIP</span>
+          <h3 class="ticket-lugar">🏟️ <span data-cfg="lugar">Cancha Sintética Brasileirao</span></h3>
+          <p class="ticket-direccion" data-cfg="direccion">Cra. 46 #76-109, Barranquilla, Atlántico</p>
+          <div class="ticket-detalles">
+            <div><span>Fecha</span><b>29 Ago 2026</b></div>
+            <div><span>Hora</span><b>3:00 PM</b></div>
+          </div>
+        </div>
+        <div class="ticket-talon">
+          <span class="ticket-num" aria-hidden="true">N° 08</span>
+          <a href="https://www.google.com/maps/search/?api=1&query=Cancha%20Sint%C3%A9tica%20Brasileirao%2C%20Cra.%2046%20%2376-109%2C%20Barranquilla" id="mapsBtn" class="btn btn-maps" target="_blank" rel="noopener noreferrer" aria-label="Abrir la ubicación de la cancha en Google Maps (se abre en una pestaña nueva)">📍 Abrir Ubicación</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================= -->
+<!-- FOOTER / CIERRE -->
+<!-- ============================= -->
+<footer class="footer" id="footer">
+  <div class="footer-estrellas" aria-hidden="true">
+    <span>✨</span><span>⭐</span><span>✨</span><span>⭐</span><span>✨</span>
+  </div>
+  <div class="footer-content" data-reveal>
+    <span class="balon-wrap footer-balon" aria-hidden="true"><span class="balon"></span></span>
+    <h2 class="footer-titulo">🏆 ¡Nos Vemos en la Cancha!</h2>
+    <p class="footer-nombre"><span data-cfg="nombre">Nicolás Orozco</span> · <span data-cfg="edad">8</span> años</p>
+  </div>
+</footer>
+
+<!-- Balón de cursor (imagen real, solo desktop con puntero fino, activado por JS) -->
+<div class="cursor-balon" id="cursorBalon" aria-hidden="true"><span class="cursor-balon-img"></span></div>
+
+<!-- Contenedor del pool de confeti reciclable -->
+<div class="confeti-pool" id="confetiPool" aria-hidden="true"></div>
+
+<script src="script.js" defer></script>
+</body>
+</html>
