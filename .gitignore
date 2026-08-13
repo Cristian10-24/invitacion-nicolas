@@ -3,7 +3,7 @@
 .claude/
 skills-lock.json
 
-# Imágenes fuente originales (no usadas por la página final,
+# Imágenes/videos fuente originales (no usados por la página final,
 # se quedan solo en local por si se necesitan para reeditar)
 mascota.jpg
 balon.png
@@ -12,6 +12,7 @@ Balon-limpio.png
 camiseta.png
 snnopy-no.png
 snnopy.mejor.png
+intro.mp4
 
 # Sistema
 .DS_Store

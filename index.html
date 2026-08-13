@@ -15,7 +15,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Fredoka:wght@400;500;600;700&display=swap">
 
-<!-- Única imagen precargada: la fotografía del estadio, protagonista del Hero -->
+<!-- Imágenes precargadas: el sprite de la intro (lo primero que se ve) y -->
+<!-- la fotografía del estadio, protagonista del Hero justo después -->
+<link rel="preload" as="image" href="intro-snoopy-sprite.jpg">
 <link rel="preload" as="image" href="futbol.jpeg">
 
 <link rel="stylesheet" href="style.css">
@@ -26,14 +28,12 @@
 
 <!-- ============================= -->
 <!-- INTRO DE ENTRADA (se auto-elimina del DOM al terminar o al saltarla) -->
+<!-- Secuencia tipo sprite armada con 8 fotogramas reales del video de   -->
+<!-- referencia (Snoopy patea el balón), sin texto ni elementos nuevos. -->
 <!-- ============================= -->
 <div class="intro-wrap" id="introWrap">
   <div class="intro" id="intro" aria-hidden="true">
-    <div class="intro-cancha"></div>
-    <span class="balon-wrap intro-balon" id="introBalon">
-      <span class="balon"></span>
-    </span>
-    <p class="intro-texto" id="introTexto">PREPARADOS...</p>
+    <div class="intro-sprite" id="introSprite"></div>
   </div>
   <button class="intro-skip" id="introSkip" type="button">Saltar intro ⏭</button>
 </div>
@@ -162,13 +162,12 @@
       </div>
 
       <div class="mascota" data-reveal>
-        <div class="patada-stage" id="patadaStage">
+        <div class="mascota-fila">
           <div class="mascota-sombra" aria-hidden="true"></div>
-          <span class="patada-impacto" aria-hidden="true"></span>
           <img
             src="snnopy.png"
-            alt="Snoopy con camiseta deportiva, listo para patear el balón"
-            class="patada-snoopy"
+            alt="Snoopy con camiseta deportiva, listo para el partido"
+            class="mascota-img"
             loading="lazy"
             decoding="async"
             width="1023"
@@ -177,7 +176,7 @@
           <img
             src="balon-cursor-sinfondo.png"
             alt=""
-            class="patada-balon"
+            class="mascota-balon"
             aria-hidden="true"
             loading="lazy"
             decoding="async"

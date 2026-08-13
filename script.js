@@ -110,18 +110,13 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    const intro = document.getElementById('intro');
-    const texto = document.getElementById('introTexto');
+    const sprite = document.getElementById('introSprite');
     const skipBtn = document.getElementById('introSkip');
     let terminada = false;
-    const temporizadores = [];
-
-    function programar(fn, ms){ temporizadores.push(setTimeout(fn, ms)); }
 
     function saltar(){
       if(terminada) return;
       terminada = true;
-      temporizadores.forEach(clearTimeout);
       sessionStorage.setItem('introVista', '1');
       wrap.classList.add('saliendo');
       setTimeout(() => { wrap.remove(); confeti.lanzar(16); }, 260);
@@ -132,36 +127,9 @@ document.addEventListener('DOMContentLoaded', () => {
       if(e.key === 'Escape'){ saltar(); document.removeEventListener('keydown', escSalir); }
     });
 
-    // Secuencia: balón rueda → impacto → "PREPARADOS..." → 3 → 2 → 1 → revela
-    texto.textContent = '';
-    programar(() => intro.classList.add('rodando'), 60);
-
-    programar(() => {
-      intro.classList.add('impacto');
-      intro.classList.add('cuenta');
-      texto.textContent = 'PREPARADOS...';
-    }, 900);
-
-    ['3', '2', '1'].forEach((num, i) => {
-      programar(() => {
-        intro.classList.remove('impacto');
-        texto.classList.remove('cuenta');
-        void texto.offsetWidth;
-        texto.classList.add('cuenta');
-        texto.textContent = num;
-      }, 1400 + i * 350);
-    });
-
-    programar(() => {
-      sessionStorage.setItem('introVista', '1');
-      wrap.classList.add('saliendo');
-      confeti.lanzar(16);
-    }, 2500);
-
-    programar(() => {
-      terminada = true;
-      wrap.remove();
-    }, 2950);
+    // La secuencia de fotogramas (@keyframes introSnoopySprite en style.css)
+    // termina sola; tras una breve pausa en el reposo final, se sale.
+    sprite.addEventListener('animationend', () => setTimeout(saltar, 350));
   })();
 
   /* ============================= */
