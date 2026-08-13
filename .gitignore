@@ -3,6 +3,13 @@
 .claude/
 skills-lock.json
 
+# Imágenes fuente originales (no usadas por la página final,
+# se quedan solo en local por si se necesitan para reeditar)
+mascota.jpg
+balon.png
+balon-cursor.png
+Balon-limpio.png
+
 # Sistema
 .DS_Store
 Thumbs.db
