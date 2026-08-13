@@ -110,7 +110,8 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    const sprite = document.getElementById('introSprite');
+    const wrapVideo = document.getElementById('introVideoWrap');
+    const video = document.getElementById('introVideo');
     const skipBtn = document.getElementById('introSkip');
     let terminada = false;
 
@@ -127,9 +128,17 @@ document.addEventListener('DOMContentLoaded', () => {
       if(e.key === 'Escape'){ saltar(); document.removeEventListener('keydown', escSalir); }
     });
 
-    // La secuencia de fotogramas (@keyframes introSnoopySprite en style.css)
-    // termina sola; tras una breve pausa en el reposo final, se sale.
-    sprite.addEventListener('animationend', () => setTimeout(saltar, 350));
+    video.play().catch(() => {}); // respaldo silencioso si el navegador bloquea el autoplay
+
+    if(typeof gsap !== 'undefined'){
+      gsap.to(wrapVideo, { opacity: 1, duration: .6, ease: 'power1.out' });
+    } else {
+      wrapVideo.style.opacity = 1; // por si el CDN de GSAP no llegó a cargar
+    }
+
+    // Cuando Snoopy termina de patear y el balón sale de escena, el propio
+    // video termina; tras una breve pausa se cierra la intro.
+    video.addEventListener('ended', () => setTimeout(saltar, 300));
   })();
 
   /* ============================= */

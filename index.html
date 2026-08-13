@@ -15,9 +15,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Fredoka:wght@400;500;600;700&display=swap">
 
-<!-- Imágenes precargadas: el sprite de la intro (lo primero que se ve) y -->
-<!-- la fotografía del estadio, protagonista del Hero justo después -->
-<link rel="preload" as="image" href="intro-snoopy-sprite.jpg">
+<!-- Video de la intro (lo primero que se ve) y la fotografía del estadio, -->
+<!-- protagonista del Hero justo después -->
+<link rel="preload" as="video" href="intro-snnopy.mp4" type="video/mp4">
 <link rel="preload" as="image" href="futbol.jpeg">
 
 <link rel="stylesheet" href="style.css">
@@ -28,12 +28,20 @@
 
 <!-- ============================= -->
 <!-- INTRO DE ENTRADA (se auto-elimina del DOM al terminar o al saltarla) -->
-<!-- Secuencia tipo sprite armada con 8 fotogramas reales del video de   -->
-<!-- referencia (Snoopy patea el balón), sin texto ni elementos nuevos. -->
+<!-- Video real (Snoopy patea el balón) a pantalla completa, con el fondo -->
+<!-- claro atenuado vía filter+mix-blend-mode. Se reproduce una sola vez. -->
 <!-- ============================= -->
 <div class="intro-wrap" id="introWrap">
-  <div class="intro" id="intro" aria-hidden="true">
-    <div class="intro-sprite" id="introSprite"></div>
+  <div class="intro-video-wrap" id="introVideoWrap" aria-hidden="true">
+    <video
+      id="introVideo"
+      class="intro-video"
+      src="intro-snnopy.mp4"
+      autoplay
+      muted
+      playsinline
+      preload="auto"
+    ></video>
   </div>
   <button class="intro-skip" id="introSkip" type="button">Saltar intro ⏭</button>
 </div>
@@ -322,6 +330,8 @@
 <!-- Contenedor del pool de confeti reciclable -->
 <div class="confeti-pool" id="confetiPool" aria-hidden="true"></div>
 
+<!-- GSAP (CDN) — solo anima el fade-in del video de la intro -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script src="script.js" defer></script>
 </body>
 </html>
