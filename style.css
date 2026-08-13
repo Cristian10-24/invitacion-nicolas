@@ -633,25 +633,73 @@ h1, h2, h3{ font-family:var(--f-display); font-weight:400; letter-spacing:.01em;
 
 .mascota{
   margin:56px auto 0;
-  max-width:220px;
+  max-width:300px;
   text-align:center;
   position:relative;
 }
+
+/* Escenario de la patada: Snoopy y el balón son capas independientes   */
+/* superpuestas sobre la misma base, cada una con su propia animación   */
+/* CSS. El balón puede viajar más allá de los límites del escenario     */
+/* (overflow visible) hasta salir de la pantalla; solo lo recorta el    */
+/* overflow-x:hidden del body, que es justo el efecto buscado.          */
+.patada-stage{
+  position:relative;
+  width:220px;
+  height:262px;
+  margin:0 auto;
+}
 .mascota-sombra{
   position:absolute;
-  bottom:14px; left:50%;
+  bottom:12px; left:38%;
   transform:translateX(-50%);
-  width:150px; height:26px;
-  background:radial-gradient(ellipse at center, rgba(255,210,63,.35), transparent 70%);
+  width:120px; height:22px;
+  background:radial-gradient(ellipse at center, rgba(255,210,63,.32), transparent 70%);
   border-radius:50%;
   z-index:0;
 }
-.mascota-img{
-  position:relative; z-index:1;
-  width:150px; height:auto; margin:0 auto;
+.patada-snoopy{
+  position:absolute;
+  left:50%; bottom:0;
+  transform:translateX(-46%);
+  transform-origin:62% 97%;
+  width:172px; height:auto;
   filter:drop-shadow(0 10px 14px rgba(0,0,0,.4));
-  animation:mascotaFlotar 4.4s ease-in-out infinite;
+  will-change:transform;
+  z-index:2;
 }
+.patada-balon{
+  position:absolute;
+  left:15%; bottom:2px;
+  width:42px; height:auto;
+  filter:drop-shadow(0 4px 8px rgba(0,0,0,.4));
+  will-change:transform, opacity;
+  z-index:3;
+}
+.patada-impacto{
+  position:absolute;
+  left:15%; bottom:14px;
+  width:44px; height:44px;
+  transform:translate(-50%, 50%) scale(.4);
+  background:radial-gradient(circle, rgba(255,255,255,.95), rgba(255,210,63,.7) 45%, transparent 72%);
+  border-radius:50%;
+  opacity:0;
+  z-index:4;
+}
+
+/* La animación solo arranca cuando la tarjeta entra al viewport (misma  */
+/* clase .visible que usa el observer genérico de data-reveal) y una    */
+/* sola vez — no hay loop, coincide con "se reproduce una vez al cargar". */
+.mascota.visible .patada-snoopy{
+  animation:patadaSnoopy 2.6s cubic-bezier(.34,1.15,.4,1) .4s 1 both;
+}
+.mascota.visible .patada-balon{
+  animation:patadaBalon 2.6s linear .4s 1 both;
+}
+.mascota.visible .patada-impacto{
+  animation:patadaImpacto 2.6s ease-out .4s 1 both;
+}
+
 .mascota-tag{
   position:relative; z-index:1;
   margin-top:10px;
@@ -1002,9 +1050,29 @@ body.cursor-personalizado .cancha-campo{ cursor:none; }
   60%{ transform:translateY(2px) scale(1.05); opacity:1; }
   100%{ transform:translateY(0) scale(1); opacity:1; }
 }
-@keyframes mascotaFlotar{
-  0%, 100%{ transform:translateY(0) rotate(0deg); }
-  50%{ transform:translateY(-8px) rotate(-1.5deg); }
+/* Patada de Snoopy: cuerpo entero como una sola pieza (imagen única,    */
+/* sin capas de piernas) — el golpe se simula con inclinación + avance   */
+/* del cuerpo, sincronizado por porcentaje de tiempo con el vuelo del    */
+/* balón en @keyframes patadaBalon.                                     */
+@keyframes patadaSnoopy{
+  0%    { transform:translateX(-46%) rotate(0deg); }
+  26%   { transform:translateX(-52%) rotate(-12deg); }   /* toma impulso */
+  40%   { transform:translateX(-38%) rotate(14deg) scale(.97); } /* golpe */
+  56%   { transform:translateX(-48%) rotate(-3deg); }    /* rebote */
+  76%   { transform:translateX(-44%) rotate(1.5deg); }
+  100%  { transform:translateX(-46%) rotate(0deg); }     /* reposo */
+}
+@keyframes patadaBalon{
+  0%, 38%{ transform:translate(0,0) rotate(0deg) scale(1); opacity:1; }
+  55%   { transform:translate(-150px,-8px) rotate(-230deg) scale(1.05); }
+  75%   { transform:translate(-380px,4px) rotate(-580deg) scale(1); }
+  92%   { transform:translate(-650px,14px) rotate(-880deg) scale(.88); }
+  100%  { transform:translate(-820px,20px) rotate(-1040deg) scale(.78); opacity:0; }
+}
+@keyframes patadaImpacto{
+  0%, 37%{ opacity:0; transform:translate(-50%,50%) scale(.4); }
+  41%   { opacity:1; transform:translate(-50%,50%) scale(1.5); }
+  52%, 100%{ opacity:0; transform:translate(-50%,50%) scale(2); }
 }
 @keyframes camisetaBalanceo{
   0%, 100%{ transform:rotate(-1.5deg); }

@@ -162,16 +162,28 @@
       </div>
 
       <div class="mascota" data-reveal>
-        <div class="mascota-sombra" aria-hidden="true"></div>
-        <img
-          src="mascota-sinfondo.png"
-          alt="Snoopy con lentes de sol y camiseta deportiva a rayas, la mascota del equipo"
-          class="mascota-img"
-          loading="lazy"
-          decoding="async"
-          width="400"
-          height="532"
-          onerror="this.closest('.mascota').style.display='none'">
+        <div class="patada-stage" id="patadaStage">
+          <div class="mascota-sombra" aria-hidden="true"></div>
+          <span class="patada-impacto" aria-hidden="true"></span>
+          <img
+            src="snnopy.png"
+            alt="Snoopy con camiseta deportiva, listo para patear el balón"
+            class="patada-snoopy"
+            loading="lazy"
+            decoding="async"
+            width="1023"
+            height="1537"
+            onerror="this.closest('.mascota').style.display='none'">
+          <img
+            src="balon-cursor-sinfondo.png"
+            alt=""
+            class="patada-balon"
+            aria-hidden="true"
+            loading="lazy"
+            decoding="async"
+            width="160"
+            height="159">
+        </div>
         <p class="mascota-tag">🕶️ ¡Snoopy ya está listo para el partido!</p>
       </div>
     </div>
